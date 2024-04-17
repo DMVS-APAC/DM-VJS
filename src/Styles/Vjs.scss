@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+}
+.video-js {
+  width: 100vw;
+  height: 100vh;
+}
+
+.vjs-has-started .vjs-control-bar {
+  background: none;
+  height: clamp(48px,3rem,51px);
+  padding: 0 .6rem;
+}
+
+.video-js .vjs-big-play-button {
+  border: 0;
+  background: none;
+  border-radius: 0;
+  height: clamp(48px,3rem,60px);
+  width: clamp(48px,3rem,60px);
+  top: calc(50%);
+  left: calc(50% + 24px);
+}
+
+.video-js .vjs-big-play-button:focus, .video-js:hover .vjs-big-play-button {
+  background: none;
+}
+
+.video-js .vjs-big-play-button .vjs-icon-placeholder::before {
+  content: none;
+}
+
+.video-js .vjs-big-play-button .vjs-icon-placeholder {
+  background: url("~images/play_button.svg");
+  height: clamp(48px,3rem,60px);
+  width: clamp(48px,3rem,60px);
+  display: block;
+}
+
+.vjs-has-started .vjs-big-play-button {
+  display: none;
+}
+.vjs-has-started.vjs-playing:hover .vjs-big-play-button, .vjs-has-started.vjs-paused:hover .vjs-big-play-button {
+  display: block;
+}
+
+.vjs-has-started.vjs-playing .vjs-big-play-button .vjs-icon-placeholder {
+  background-image: url("~images/pause_button.svg");
+  //pointer-events: ;
+}
+
+.video-js .vjs-play-control {
+  display: none;
+  //position: absolute;
+  //top: -210%;
+  //left: calc(50% - 24px);
+  //width: 48px;
+  //height: 48px;
+}
+//.video-js .vjs-big-play-button .vjs-icon-placeholder::before, .video-js .vjs-play-control .vjs-icon-placeholder::before, .vjs-icon-play::before, .video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder::before, .vjs-icon-pause::before {
+//  content: none;
+//}
+//
+//.video-js .vjs-play-control .vjs-icon-placeholder {
+//  background-image: url("~images/play_button.svg");
+//  background-size: 48px;
+//  background-position: center;
+//  background-repeat: no-repeat;
+//  height: clamp(48px,3rem,60px);
+//  width: clamp(48px,3rem,60px);
+//  padding: .5rem;
+//}
+//
+//.video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder {
+//  background-image: url("~images/pause_button.svg");
+//}
+
+.video-js .vjs-volume-panel {
+  order: 1;
+}
+.video-js .vjs-mute-control {
+}
+
+.video-js .vjs-mute-control .vjs-icon-placeholder::before, .vjs-icon-volume-high::before, .video-js .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder::before, .vjs-icon-volume-mute::before {
+  content: none;
+}
+
+.video-js .vjs-mute-control .vjs-icon-placeholder {
+  background-image: url("~images/sound_on_button.svg");
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: clamp(40px,2.5rem,55px);
+  width: clamp(40px,2.5rem,55px);
+  padding: .5rem;
+}
+.video-js .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder {
+  background-image: url("~images/sound_off_button.svg");
+}
+
+.video-js .vjs-play-progress::before {
+  font-size: 1.2em;
+}
+
+.video-js .vjs-fullscreen-control {
+  order: 2;
+}
+
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder::before, .vjs-icon-fullscreen-enter::before, .video-js.vjs-fullscreen .vjs-fullscreen-control .vjs-icon-placeholder::before, .vjs-icon-fullscreen-exit::before {
+  content: none;
+}
+
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder {
+  background-image: url("~images/fullscreen_button.svg");
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: clamp(40px,2.5rem,55px);
+  width: clamp(40px,2.5rem,55px);
+  padding: .5rem;
+}
+.video-js.vjs-fullscreen .vjs-fullscreen-control .vjs-icon-placeholder {
+  background-image: url("~images/unfullscreen_button.svg");
+}
+
+.video-js .vjs-progress-control {
+  order: 0;
+}
+
+.video-js .vjs-time-control {
+  font-size: .875rem;
+  line-height: 3.2em;
+}
+
+.video-js .vjs-progress-holder {
+  height: .5em;
+}
+.video-js .vjs-progress-holder .vjs-load-progress, .video-js .vjs-progress-holder .vjs-load-progress div, .video-js .vjs-progress-holder .vjs-play-progress {
+  border-radius: 5px;
+}
+
+.vjs-volume-bar.vjs-slider-horizontal {
+  border-radius: 5px;
+  margin: 22px 0.45em 0;
+}
+
+.vjs-error .vjs-error-display .vjs-modal-dialog-content {
+  font-size: 2em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
