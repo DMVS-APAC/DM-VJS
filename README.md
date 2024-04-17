@@ -1,3 +1,3 @@
 # Dailymotion VJS Cloned
 
-A UI for alternative if Dailymotion player is not working
+A UI for alternative for old version browser
