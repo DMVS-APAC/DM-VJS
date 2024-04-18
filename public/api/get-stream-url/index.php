@@ -141,39 +141,39 @@ function fetchStreamUrls(string $videoId, string $clientIp, string $videoFormats
      * ```
      *
      */
-    curl_setopt_array(
-        $curl,
-        [
-            CURLOPT_TIMEOUT => 2,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => DAILYMOTION_API_METADATA . "/" . $videoId,
-            CURLOPT_HTTPHEADER => ['Content-Type: application/json']
-        ]
-    );
-
-    $jsonVideoMetadata = curl_exec($curl);
-    $videoMetadata = json_decode($jsonVideoMetadata);
-
-    if ( isset($videoMetadata->error) ) {
-        $errorJson = new stdClass();
-
-        // It's only handle for private and geo blocked content
-        if ( isset($videoMetadata->error->status_code) && $videoMetadata->error->status_code === 403 ) {
-            header('HTTP/1.1 403 Forbidden');
-            $errorJson->title = $videoMetadata->error->title;
-            $errorJson->message = $videoMetadata->error->raw_message;
-        }
-
-        // If the video is password protected, the json value is little different with private and ge blocked
-        if ( $videoMetadata->error->code == 403 ) {
-            header('HTTP/1.1 403 Forbidden');
-            $errorJson->title = $videoMetadata->error->type;
-            $errorJson->message = $videoMetadata->error->message;
-        }
-
-        curl_close($curl);
-        return json_encode($errorJson);
-    }
+//    curl_setopt_array(
+//        $curl,
+//        [
+//            CURLOPT_TIMEOUT => 2,
+//            CURLOPT_RETURNTRANSFER => true,
+//            CURLOPT_URL => DAILYMOTION_API_METADATA . "/" . $videoId,
+//            CURLOPT_HTTPHEADER => ['Content-Type: application/json']
+//        ]
+//    );
+//
+//    $jsonVideoMetadata = curl_exec($curl);
+//    $videoMetadata = json_decode($jsonVideoMetadata);
+//
+//    if ( isset($videoMetadata->error) ) {
+//        $errorJson = new stdClass();
+//
+//        // It's only handle for private and geo blocked content
+//        if ( isset($videoMetadata->error->status_code) && $videoMetadata->error->status_code === 403 ) {
+//            header('HTTP/1.1 403 Forbidden');
+//            $errorJson->title = $videoMetadata->error->title;
+//            $errorJson->message = $videoMetadata->error->raw_message;
+//        }
+//
+//        // If the video is password protected, the json value is little different with private and ge blocked
+//        if ( $videoMetadata->error->code == 403 ) {
+//            header('HTTP/1.1 403 Forbidden');
+//            $errorJson->title = $videoMetadata->error->type;
+//            $errorJson->message = $videoMetadata->error->message;
+//        }
+//
+//        curl_close($curl);
+//        return json_encode($errorJson);
+//    }
 
     // Generate token first before generate stream URL
     $reqToken = auth();
@@ -187,7 +187,7 @@ function fetchStreamUrls(string $videoId, string $clientIp, string $videoFormats
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_URL => DAILYMOTION_API_BASE_URL . "/rest/video/{$videoId}"
                 . "?client_ip=$clientIp"
-                . "&fields={$videoFormats}"
+                . "&fields={$videoFormats},geoblocking,private"
         ]
     );
 
