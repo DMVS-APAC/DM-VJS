@@ -151,3 +151,8 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+vjs-button > .vjs-icon-placeholder:before {
+  font-size: 1.8em;
+  line-height: 2.6;
+}

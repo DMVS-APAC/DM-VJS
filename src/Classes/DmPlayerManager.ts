@@ -48,14 +48,22 @@ export default class DmPlayerManager {
   private renderPlayer(): void {
     const player= videojs(this.playerContainer, {
       controls: true,
-      // autoplay: 'muted',
+      autoplay: 'muted',
       preload: 'auto'
     })
 
     player.ready(async () => {
       const json = await this.fetchStreamUrl()
 
-      console.log(json)
+      // @ts-ignore
+      const bigButton = player.bigPlayButton
+
+      // Additional event for big play button. because this play button is only to play at first time loaded
+      bigButton.on('click', e => {
+        if (player.el_.classList.contains('vjs-playing')) {
+          player.pause()
+        }
+      })
 
       if (json.status == 403) {
         player.error(json)
