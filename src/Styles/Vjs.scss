@@ -18,8 +18,8 @@ body {
   border-radius: 0;
   height: clamp(48px,3rem,60px);
   width: clamp(48px,3rem,60px);
-  top: calc(50%);
-  left: calc(50% + 24px);
+  top: calc(50% - 24px);
+  left: calc(50% - 12px);
 }
 
 .video-js .vjs-big-play-button:focus, .video-js:hover .vjs-big-play-button {

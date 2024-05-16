@@ -1,7 +1,8 @@
-import videojs from "video.js"
-import { fetchData } from "../Libraries/FetchHelper";
+import videojs, { VideoJsPlayer } from "video.js"
+import { fetchData } from "../Libraries/FetchHelper"
 import "video.js/dist/video-js.min.css"
 import "../Styles/Vjs.scss"
+import 'url-search-params-polyfill'
 
 export default class DmPlayerManager {
   private playerContainer: HTMLVideoElement = null
@@ -14,7 +15,7 @@ export default class DmPlayerManager {
     this.renderPlayer()
   }
 
-  getParams() {
+  getParams(): void {
     // Create a URLSearchParams object from the current URL's query string
     const params: URLSearchParams = new URLSearchParams(window.location.search);
     this.videoId = params.get('video-id')
@@ -46,7 +47,7 @@ export default class DmPlayerManager {
   }
 
   private renderPlayer(): void {
-    const player= videojs(this.playerContainer, {
+    const player: VideoJsPlayer = videojs(this.playerContainer, {
       controls: true,
       autoplay: 'muted',
       preload: 'auto'
@@ -60,6 +61,7 @@ export default class DmPlayerManager {
 
       // Additional event for big play button. because this play button is only to play at first time loaded
       bigButton.on('click', e => {
+        // @ts-ignore
         if (player.el_.classList.contains('vjs-playing')) {
           player.pause()
         }
